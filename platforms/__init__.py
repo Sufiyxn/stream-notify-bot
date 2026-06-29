@@ -15,7 +15,6 @@ from __future__ import annotations
 import aiohttp
 
 from platforms.base import BasePlatform, StreamInfo
-from platforms.kick import KickPlatform
 from platforms.twitch import TwitchPlatform
 from platforms.youtube import YouTubePlatform
 from utils.config import Config
@@ -24,7 +23,6 @@ from utils.config import Config
 PLATFORM_REGISTRY: tuple[type[BasePlatform], ...] = (
     YouTubePlatform,
     TwitchPlatform,
-    KickPlatform,
 )
 
 
@@ -55,5 +53,4 @@ __all__ = [
     "build_platforms",
     "YouTubePlatform",
     "TwitchPlatform",
-    "KickPlatform",
 ]

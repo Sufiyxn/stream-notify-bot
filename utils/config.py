@@ -33,7 +33,6 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "streamer_name": "Alpha",
     "youtube_channel_id": "",
     "twitch_username": "",
-    "kick_username": "",
     "poll_interval": 60,
     "embed_color": "0xFF0000",
     "custom_message": "**{name}** just went live on {platform}!",
@@ -50,7 +49,6 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "themes": {
         "youtube": "0xFF0000",
         "twitch": "0x9146FF",
-        "kick": "0x53FC18",
         "default": "0xFF0000",
     },
     "servers": [],
@@ -143,7 +141,6 @@ class Config:
     # --- Platforms (raw values; consumed by the platform classes) ---------
     youtube_channel_id: str | None
     twitch_username: str | None
-    kick_username: str | None
 
     # --- Presentation -----------------------------------------------------
     buttons: dict[str, ButtonConfig]
@@ -247,7 +244,6 @@ def load_config(
         servers=servers,
         youtube_channel_id=(data.get("youtube_channel_id") or None),
         twitch_username=(data.get("twitch_username") or None),
-        kick_username=(data.get("kick_username") or None),
         buttons=buttons,
         themes=themes,
         raw=data,
@@ -269,10 +265,10 @@ def _validate(config: Config) -> None:
             "notification_channel_id (or a 'servers' list) in config.json."
         )
     # At least one platform must be configured to have anything to monitor.
-    if not any([config.youtube_channel_id, config.twitch_username, config.kick_username]):
+    if not any([config.youtube_channel_id, config.twitch_username]):
         raise ConfigError(
-            "No platforms configured. Set at least one of youtube_channel_id, "
-            "twitch_username or kick_username in config.json."
+            "No platforms configured. Set at least one of youtube_channel_id "
+            "or twitch_username in config.json."
         )
     if config.twitch_username and not (config.twitch_client_id and config.twitch_client_secret):
         raise ConfigError(

@@ -11,7 +11,6 @@ from utils.config import Config
 PLATFORM_EMOJIS: dict[str, str] = {
     "youtube": "📺",
     "twitch": "🟣",
-    "kick": "🟢",
 }
 
 

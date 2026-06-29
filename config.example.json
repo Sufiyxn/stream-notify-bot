@@ -6,7 +6,6 @@
   "streamer_name": "Alpha",
   "youtube_channel_id": "",
   "twitch_username": "",
-  "kick_username": "",
   "poll_interval": 60,
   "embed_color": "0xFF0000",
   "custom_message": "**{name}** just went live on {platform}!",
@@ -23,7 +22,6 @@
   "themes": {
     "youtube": "0xFF0000",
     "twitch": "0x9146FF",
-    "kick": "0x53FC18",
     "default": "0xFF0000"
   },
   "servers": []

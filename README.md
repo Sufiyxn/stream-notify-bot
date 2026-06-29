@@ -1,7 +1,7 @@
 # 🔴 Stream Notifier — Discord Live Bot
 
 A production-ready Discord bot that notifies your server the moment you go
-**live** on **YouTube**, **Twitch** or **Kick** — with a clean, extensible
+**live** on **YouTube** or **Twitch** — with a clean, extensible
 architecture that makes adding new platforms trivial.
 
 Built with **Python 3.12+** and **discord.py 2.x**, fully async, type-hinted,
@@ -11,7 +11,7 @@ logged and configurable.
 
 ## ✨ Features
 
-- **Multi-platform live detection** — YouTube, Twitch and Kick out of the box.
+- **Multi-platform live detection** — YouTube and Twitch out of the box.
 - **Pluggable architecture** — add a new platform by dropping one file in
   `platforms/` and registering it. Every platform implements `is_live()` and
   `get_stream_info()`.
@@ -48,7 +48,6 @@ stream-notify-bot/
 │   ├── base.py           # BasePlatform ABC + StreamInfo dataclass + retry
 │   ├── youtube.py        # YouTube (Data API v3 + HTML fallback)
 │   ├── twitch.py         # Twitch (Helix API + OAuth client credentials)
-│   ├── kick.py           # Kick (public channel API)
 │   └── __init__.py       # Platform registry / factory
 ├── utils/
 │   ├── config.py         # Typed config loading + validation
@@ -113,7 +112,6 @@ Edit the values:
 | `streamer_name` | Your display name (used in messages/presence). |
 | `youtube_channel_id` | Channel ID like `UCxxxxxxxx` (leave blank to disable). |
 | `twitch_username` | Twitch login name (leave blank to disable). |
-| `kick_username` | Kick username (leave blank to disable). |
 | `poll_interval` | Seconds between checks (default `60`, minimum `10`). |
 | `embed_color` | Default embed colour, e.g. `"0xFF0000"`. |
 | `custom_message` | Supports `{name}`, `{platform}`, `{url}` placeholders. |
@@ -176,7 +174,7 @@ You should see:
 
    ```python
    from platforms.myplatform import MyPlatform
-   PLATFORM_REGISTRY = (YouTubePlatform, TwitchPlatform, KickPlatform, MyPlatform)
+   PLATFORM_REGISTRY = (YouTubePlatform, TwitchPlatform, MyPlatform)
    ```
 
 Done — the monitor will start polling it automatically.
@@ -212,8 +210,6 @@ bot user. Slash commands and monitoring continue to work as normal.
   fallback can be blocked by consent pages in some regions.
 - **Twitch error about client id/secret** — set `TWITCH_CLIENT_ID` and
   `TWITCH_CLIENT_SECRET`.
-- **Kick returns nothing** — Kick is occasionally behind Cloudflare; the bot
-  retries automatically and resumes on the next poll.
 
 ---
 
