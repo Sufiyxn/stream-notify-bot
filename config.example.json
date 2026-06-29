@@ -1,0 +1,30 @@
+{
+  "discord_token": "",
+  "guild_id": 0,
+  "notification_channel_id": 0,
+  "live_role_id": 0,
+  "streamer_name": "Alpha",
+  "youtube_channel_id": "",
+  "twitch_username": "",
+  "kick_username": "",
+  "poll_interval": 60,
+  "embed_color": "0xFF0000",
+  "custom_message": "**{name}** just went live on {platform}!",
+  "presence_idle": "for live streams...",
+  "ping_once_per_stream": true,
+  "delete_after_offline": false,
+  "webhook_mode": false,
+  "webhook_url": "",
+  "buttons": {
+    "watch_stream": { "enabled": true, "label": "Watch Stream", "emoji": "▶️" },
+    "join_discord": { "enabled": true, "label": "Join Discord", "emoji": "💬", "url": "https://discord.gg/your-invite" },
+    "subscribe": { "enabled": true, "label": "Subscribe", "emoji": "📺", "url": "https://youtube.com/@yourchannel" }
+  },
+  "themes": {
+    "youtube": "0xFF0000",
+    "twitch": "0x9146FF",
+    "kick": "0x53FC18",
+    "default": "0xFF0000"
+  },
+  "servers": []
+}
